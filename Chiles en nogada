@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Receta de Chiles Rellenos</title>
+</head>
+<body>
+
+  <h1>Receta Tradicional de Chiles Rellenos</h1>
+  <h2>Un clásico mexicano lleno de sabor</h2>
+
+  <p>Los <strong>chiles rellenos</strong> son un platillo típico de la cocina mexicana, conocido por su sabor intenso y su versatilidad. Esta receta te enseñará a prepararlos de forma sencilla y deliciosa.</p>
+
+  <p>Perfectos para una comida familiar o una ocasión especial, los chiles rellenos pueden adaptarse con distintos ingredientes según tu gusto.</p>
+
+  <h3>Ingredientes</h3>
+  <ul>
+    <li>4 chiles poblanos</li>
+    <li>300g de carne molida</li>
+    <li>1/2 cebolla picada</li>
+    <li>2 dientes de ajo</li>
+    <li>2 tomates</li>
+    <li>Sal y pimienta al gusto</li>
+    <li>Aceite vegetal</li>
+    <li>Harina y huevo para empanizar</li>
+  </ul>
+
+  <h3>Pasos para preparar</h3>
+  <ol>
+    <li>Asa los chiles poblanos hasta que la piel se queme ligeramente. Luego colócalos en una bolsa para que suden y puedas pelarlos fácilmente.</li>
+    <li>Prepara el relleno: sofríe la cebolla y el ajo, añade la carne molida y los tomates picados. Cocina hasta que todo esté bien integrado.</li>
+    <li>Rellena los chiles con la mezcla de carne.</li>
+    <li>Pásalos por harina y luego por huevo batido.</li>
+    <li>Fríelos en aceite caliente hasta que estén dorados.</li>
+    <li>Sirve caliente, acompañados de arroz o frijoles.</li>
+  </ol>
+
+  <p>Para más detalles y variantes de esta receta, visita la fuente original en [Goya Foods](https://www.ciw.edu.mx/como-hacer-chiles-en-nogada/).</p>
+
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7IbvHrpPxdTN-OraroU6Zbh-pJW5RxoBwoQ&s" alt="Chiles Rellenos" width="200">
+
+  <footer>
+    <p>© Tecnm campus Pachuca – Programación Web - Alumno</p>
+  </footer>
+
+</body>
+</html>
