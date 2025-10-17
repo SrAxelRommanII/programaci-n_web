@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicios JavaScript</title>
+</head>
+<body>
+
+  <h1>Ejercicio 1: Declaración de variables</h1>
+  <script>
+    let nombre = "Christopher Alejandro";
+    let edad = 21;
+    const pais = "Mexico";
+    let estudiante = true;
+
+    alert("Hola, soy" + nombre + ", tengo  anos" + edad + "  y soy de" + pais + ".");
+  </script>
+
+
+
+<h1>Ejercicio 2: Operaciones matemáticas</h1>
+  <script>
+    let a = 10;
+    let b = 5;
+
+    let suma = a + b;
+    let resta = a - b;
+    let multiplicacion = a * b;
+    let division = a / b;
+
+    console.log("La suma es: " + suma);
+    console.log("La resta es: " + resta);
+    console.log("La multiplicación es: " + multiplicacion);
+    console.log("La división es: " + division);
+  </script>
+
+
+
+
+  <h1>Ejercicio 3: Funciones</h1>
+  <script>
+    function calcularCuadrado(numero) {
+      return numero * numero;
+    }
+
+    alert(calcularCuadrado(5));
+  </script>
+
+
+
+
+<h1>Ejercicio 4: Función flecha</h1>
+  <button onclick="mostrarResultado()">Sumar</button>
+  <p id="resultado"></p>
+
+  <script>
+    const sumar = (num1, num2) => num1 + num2;
+
+    function mostrarResultado() {
+      let resultadoSuma = sumar(3, 7);
+      document.getElementById("resultado").textContent = "La suma es: " + resultadoSuma;
+    }
+  </script>
+
+
+
+
+  <h1>Ejercicio 5: Condicional y mensaje final</h1>
+  <script>
+    function evaluarEdad() {
+      let edadUsuario = prompt("Por favor, introduce tu edad:");
+      
+      if (edadUsuario >= 18) {
+        alert("Eres mayor de edad");
+      } else {
+        alert("Eres menor de edad");
+      }
+    }
+    evaluarEdad();
+
+
+    
+  </script>
+</body>
+</html>
+
+
