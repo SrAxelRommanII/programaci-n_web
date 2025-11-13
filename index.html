@@ -1,37 +1,863 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Tabla de Información</title>
-  <style>
-    table {
-      width: 50%;
-      border-collapse: collapse;
-      margin: 20px auto;
-      font-family: Arial, sans-serif;
-    }
-    th, td {
-      border: 1px solid #333;
-      padding: 10px;
-      text-align: center;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinos Artesanales Díaz - Tienda Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Georgia, serif;
+            margin: 0;
+            background-color: #2c2c2c; /* Fondo oscuro */
+            background-image: url('imagen/dark_marble_pattern.jpg'); /* Patrón de mármol oscuro */
+            color: #333; /* Color de texto predeterminado */
+            line-height: 1.6;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* Fondo blanco para el contenido principal */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        header {
+            background-color: #4a041f; /* Granate oscuro / Color principal */
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between; /* Espacio entre los elementos */
+            align-items: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20px; /* Espacio debajo del header */
+        }
+
+        /* --- Estilos Revertidos/Ajustados para el Encabezado Original --- */
+        header .logo {
+            height: 60px; /* Tamaño del logo */
+            width: auto;
+            margin-right: 15px; /* Espacio a la derecha del logo */
+            border-radius: 50%; /* Si el logo es circular */
+            object-fit: cover;
+        }
+
+        header h1 {
+            /* Título centrado visualmente */
+            flex-grow: 1; /* Permite que el H1 ocupe el espacio central */
+            text-align: center;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: #b8860b; /* Dorado para el título */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            /* Ajuste para evitar que el H1 empuje demasiado el logo */
+            margin-left: -75px; 
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            min-width: 150px; /* Asegura espacio para las acciones */
+            justify-content: flex-end;
+        }
+        /* --- Fin de Estilos Revertidos/Ajustados --- */
+
+        .header-actions a, .cart-info {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-actions a:hover {
+            color: #b8860b; /* Dorado al pasar el mouse */
+        }
+
+        .cart-icon {
+            margin-right: 5px;
+            font-size: 1.2em; /* Tamaño del ícono */
+        }
+
+        nav {
+            background-color: #6d073c; /* Granate más claro / Color secundario */
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #b8860b; /* Dorado para el subrayado */
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: #b8860b; /* Dorado al pasar el mouse */
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: #4a041f; /* Granate oscuro */
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: #b8860b; /* Dorado */
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .cta-button {
+            display: block;
+            width: fit-content;
+            margin: 30px auto;
+            padding: 15px 30px;
+            background-color: #4a041f; /* Granate oscuro */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #6d073c; /* Granate más claro */
+            transform: translateY(-3px);
+        }
+
+        /* Estilo para las parrillas de productos y novedades */
+        .productos-grid, .novedades-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px; /* Espacio entre las tarjetas */
+            margin-top: 30px;
+        }
+
+        .producto-card, .novedad-card {
+            background-color: #fdfdfd;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .producto-card:hover, .novedad-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .producto-card img, .novedad-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: #4a041f;
+            margin-top: 0;
+            font-size: 1.6em;
+        }
+
+        .card-content p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 1.4em;
+            color: #b8860b; /* Dorado para precios */
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .add-to-cart-btn {
+            background-color: #6d073c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #4a041f;
+        }
+
+        /* Estilos para formularios */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #4a041f;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group select,
+        .form-group textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box; /* Incluye padding en el ancho */
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group button {
+            background-color: #b8860b; /* Dorado */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #a0740a; /* Dorado más oscuro */
+        }
+
+        .login-message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .login-message.success { color: green; }
+        .login-message.error { color: red; }
+
+        /* Estilos para la tabla de historial */
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .history-table th, .history-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        .history-table th {
+            background-color: #4a041f;
+            color: white;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .history-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .history-table tr:hover {
+            background-color: #e6e6e6;
+        }
+
+        /* Estilos para "El Terruño" */
+        .terruño-info {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .terruño-info div {
+            flex: 1;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .terruño-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: #4a041f;
+            margin-top: 0;
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Estilo para el reproductor de video */
+        .video-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Estilo para el mapa de Google Maps */
+        .map-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos para el footer */
+        footer {
+            background-color: #4a041f; /* Granate oscuro */
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-radius: 0 0 8px 8px;
+        }
+
+        footer .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        footer .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 15px;
+        }
+
+        footer .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: #b8860b;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        footer .footer-section p, footer .footer-section a {
+            color: #f2f2f2;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-section a:hover {
+            color: #b8860b;
+        }
+
+        footer .legal-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #ccc;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+
+        footer .legal-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries para responsividad */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding-bottom: 10px;
+            }
+            header h1 {
+                margin: 10px 0; /* Espacio para el título centrado */
+            }
+            header .logo {
+                margin-right: 0;
+            }
+            header .header-actions {
+                width: 100%;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            .productos-grid, .novedades-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .terruño-info {
+                flex-direction: column;
+            }
+            .terruño-info div {
+                margin-bottom: 20px;
+            }
+            footer .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            footer .footer-section {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-  <table>
-    <tr>
-      <th>Nombre</th>
-      <th>Edad</th>
-      <th>Teléfono</th>
-    </tr>
-    <tr>
-      <td>Juan Perez</td>
-      <td>32</td>
-      <td>0997445142</td>
-    </tr>
-  </table>
+    <div class="main-content">
+        <header>
+            <img src="imagen/logo.jpg" alt="Logo Vinos Díaz" class="logo"> 
+            
+            <h1>Vinos Artesanales Díaz</h1> 
+
+            <div class="header-actions">
+                <a href="#login">Mi Cuenta</a>
+                <div class="cart-info">
+                    <span class="cart-icon">🛒</span> Carrito (<span id="cart-count">0</span>)
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#lanzamientos">Lanzamientos</a></li>
+                <li><a href="#novedades">Novedades</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="#vinos">Vinos</a></li>
+                <li><a href="#quesos">Quesos y Accesorios</a></li>
+                <li><a href="#terruño">El Terruño</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <section id="inicio">
+            <h2>Bienvenidos a Vinos Artesanales Díaz</h2>
+            <p>Descubre la pasión y tradición en cada botella. En Díaz Legado Áureo, cultivamos y creamos vinos que cuentan historias, reflejando el carácter único de nuestro terruño en cada gota. Te invitamos a explorar nuestra colección premium de vinos artesanales mexicanos.</p>
+            <a href="#vinos" class="cta-button">Ver Vinos</a>
+        </section>
+
+        <section id="lanzamientos">
+            <h2>Próximos Lanzamientos Exclusivos</h2>
+            <p>Sé de los primeros en experimentar nuestras nuevas creaciones. Disponibles en pre-orden por tiempo limitado.</p>
+            <div class="productos-grid">
+                <div class="producto-card">
+                    <img src="imagen/futuro_tinto.jpg" alt="Malbec Cosecha 2025">
+                    <div class="card-content">
+                        <h3>Malbec Cosecha 2025</h3>
+                        <p>Notas profundas de frutos rojos y especias. Producción limitada.</p>
+                        <span class="price">$1,200 MXN</span>
+                        <button class="add-to-cart-btn" data-product-id="malbec2025">Agregar al Carrito</button>
+                    </div>
+                </div>
+                <div class="producto-card">
+                    <img src="imagen/futuro_blanco.jpg" alt="Ensamble de Blancos 'Aurora'">
+                    <div class="card-content">
+                        <h3>Ensamble de Blancos 'Aurora'</h3>
+                        <p>Frescura cítrica con toques florales. Perfecto para el verano.</p>
+                        <span class="price">$950 MXN</span>
+                        <button class="add-to-cart-btn" data-product-id="aurora">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="novedades">
+            <h2>Novedades y Eventos</h2>
+            <p>Mantente al tanto de nuestras catas, nuevos productos y las fechas importantes de la cosecha.</p>
+            <div class="novedades-grid">
+                <div class="novedad-card">
+                    <img src="https://via.placeholder.com/300x200?text=Cata+Virtual" alt="Cata Virtual de Vinos">
+                    <div class="card-content">
+                        <h3>Cata Virtual Exclusiva</h3>
+                        <p>Únete a nuestra cata online el 15 de marzo. Saborea con nosotros.</p>
+                    </div>
+                </div>
+                <div class="novedad-card">
+                    <img src="https://via.placeholder.com/300x200?text=Queso+Nuevo" alt="Queso de Cabra Añejo">
+                    <div class="card-content">
+                        <h3>Lanzamiento: Queso de Cabra Añejo</h3>
+                        <p>Maridaje perfecto para nuestros tintos. Edición limitada.</p>
+                    </div>
+                </div>
+                <div class="novedad-card">
+                    <img src="https://via.placeholder.com/300x200?text=Cosecha+2024" alt="Día de Cosecha Abierto">
+                    <div class="card-content">
+                        <h3>Día Abierto de Cosecha 2024</h3>
+                        <p>Participa en la recolección y celebra con nosotros el 20 de septiembre.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reservas">
+            <h2>Reserva tu Experiencia en la Bodega</h2>
+            <p>Visitas guiadas, catas privadas, eventos corporativos. Contáctanos para diseñar tu momento perfecto.</p>
+            <div class="form-container">
+                <form>
+                    <div class="form-group">
+                        <label for="tipo-experiencia">Tipo de Experiencia:</label>
+                        <select id="tipo-experiencia" name="tipo-experiencia">
+                            <option value="visita">Visita Guiada</option>
+                            <option value="cata">Cata Privada</option>
+                            <option value="evento">Evento Especial</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-reserva">Fecha Preferida:</label>
+                        <input type="date" id="fecha-reserva" name="fecha-reserva" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="num-personas">Número de Personas:</label>
+                        <input type="number" id="num-personas" name="num-personas" min="1" value="2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-reserva">Email de Contacto:</label>
+                        <input type="email" id="email-reserva" name="email-reserva" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comentarios">Comentarios Adicionales:</label>
+                        <textarea id="comentarios" name="comentarios"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Enviar Solicitud de Reserva</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="vinos">
+            <h2>Nuestra Colección de Vinos de Alta Gama</h2>
+            <p>Explora la diversidad de nuestro viñedo, desde robustos tintos hasta refrescantes espumosos.</p>
+            <div class="productos-grid">
+                <div class="producto-card">
+                    <img src="imagen/Vino.jpg" alt="Vino Tinto Cabernet Sauvignon">
+                    <div class="card-content">
+                        <h3>Cabernet Sauvignon Reserva</h3>
+                        <p>Intenso, con notas de ciruela y chocolate. 750ml.</p>
+                        <span class="price">$850 MXN</span>
+                        <button class="add-to-cart-btn" data-product-id="cabernet">Agregar al Carrito</button>
+                    </div>
+                </div>
+                <div class="producto-card">
+                    <img src="imagen/Vino Rosado.jpg" alt="Vino Rosado Syrah">
+                    <div class="card-content">
+                        <h3>Rosado Syrah Verano</h3>
+                        <p>Fresco y afrutado, ideal para climas cálidos. 750ml.</p>
+                        <span class="price">$600 MXN</span>
+                        <button class="add-to-cart-btn" data-product-id="rosado">Agregar al Carrito</button>
+                    </div>
+                </div>
+                <div class="producto-card">
+                    <img src="imagen/Vino Espumoso.jpg" alt="Vino Espumoso Brut">
+                    <div class="card-content">
+                        <h3>Espumoso Brut 'Celebración'</h3>
+                        <p>Burbujas finas y elegante acidez. 750ml.</p>
+                        <span class="price">$980 MXN</span>
+                        <button class="add-to-cart-btn" data-product-id="espumoso">Agregar al Carrito</button>
+                    </div>
+                </div>
+                <div class="producto-card">
+                    <img src="imagen/Vino blanco.jpg" alt="Vino Blanco Chardonnay">
+                    <div class="card-content">
+                        <h3>Chardonnay Barrica</h3>
+                        <p>Notas de vainilla y mantequilla. 750ml.</p>
+                        <span class="price">$720 MXN</span>
+                        <button class="add-to-cart-btn" data-product-id="chardonnay">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quesos">
+            <h2>Colección Gourmet: Quesos y Accesorios</h2>
+            <p>Marida nuestros vinos con selecciones exquisitas o eleva tu experiencia de degustación.</p>
+            <div class="productos-grid">
+                <div class="producto-card">
+                    <img src="imagen/queso.jpg" alt="Queso Añejo 'Terruño'">
+                    <div class="card-content">
+                        <h3>Queso Añejo 'Terruño'</h3>
+                        <p>Curación especial, ideal con vinos tintos robustos. 200g.</p>
+                        <span class="price">$350 MXN</span>
+                        <button class="add-to-cart-btn" data-product-id="queso">Agregar al Carrito</button>
+                    </div>
+                </div>
+                <div class="producto-card">
+                    <img src="imagen/copas.jpg" alt="Copas de Cristal Premium">
+                    <div class="card-content">
+                        <h3>Set de Copas de Cristal Premium</h3>
+                        <p>Diseñadas para realzar los aromas de nuestros vinos. Set de 4.</p>
+                        <span class="price">$1,100 MXN</span>
+                        <button class="add-to-cart-btn" data-product-id="copas">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="login">
+            <h2>Mi Cuenta y Historial de Compras</h2>
+            <p>Inicia sesión para ver tus pedidos recientes y gestionar tu información.</p>
+            <div class="form-container">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Usuario / Email:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Iniciar Sesión</button>
+                    </div>
+                    <div id="login-feedback" class="login-message"></div>
+                </form>
+            </div>
+
+            <h3>Historial de Vinos Comprados</h3>
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Fecha de Compra</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cabernet Sauvignon Reserva</td>
+                        <td>2023-10-15</td>
+                        <td>2</td>
+                        <td>$1,700 MXN</td>
+                    </tr>
+                    <tr>
+                        <td>Rosado Syrah Verano</td>
+                        <td>2024-01-22</td>
+                        <td>1</td>
+                        <td>$600 MXN</td>
+                    </tr>
+                    <tr>
+                        <td>Queso Añejo 'Terruño'</td>
+                        <td>2024-03-01</td>
+                        <td>1</td>
+                        <td>$350 MXN</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="terruño">
+            <h2>El Terruño de Díaz Legado Áureo</h2>
+            <p>Nuestra tierra es el corazón de nuestros vinos. Descubre la magia detrás de cada uva.</p>
+            <div class="terruño-info">
+                <div>
+                    <h3>Nuestra Tierra</h3>
+                    <p>Ubicados en la fértil región de Tecate, Baja California, nuestros viñedos se benefician de un microclima excepcional. La combinación de días soleados y noches frescas, junto con la brisa marina del Pacífico, crea condiciones ideales para el lento y óptimo maduración de la uva. El suelo, rico en minerales y de origen volcánico, aporta una complejidad y mineralidad distintiva a nuestros vinos.</p>
+                </div>
+                <div>
+                    <h3>El Artífice del Viñedo</h3>
+                    <p>Don Julio Díaz, la mente y el corazón detrás de Díaz Legado Áureo, ha dedicado su vida al cultivo de la vid. Con décadas de experiencia transmitidas de generación en generación, su filosofía se centra en el respeto a la tierra y la mínima intervención. Cada vid es cuidada con esmero, asegurando que solo las mejores uvas lleguen a la bodega, reflejando su compromiso inquebrantable con la calidad y la tradición artesanal.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="multimedia">
+            <h2>El Tesoro del Queso Mexicano</h2>
+            <p>Un pequeño documental sobre la tradición quesera artesanal que complementa nuestros vinos.</p>
+            <div class="video-container">
+                <video controls preload="metadata">
+                    <source src="video/Tesoro_del_Queso_Mexicano.mp4" type="video/mp4">
+                    <track kind="subtitles" label="Español" src="subtitulos.vtt" srclang="es" default>
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+            </div>
+        </section>
+
+        <section class="map-container">
+            <h2>Encuéntranos en Tecate, México</h2>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106096.38872504823!2d-116.73602150383793!3d32.55135118556157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d927c4b005118f%3A0x6b83f05d933e4f60!2sTecate%2C%20B.C.!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </section>
+
+        <footer id="contacto">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><strong>Correo:</strong> <a href="mailto:contacto@vinosdiaz.com">contacto@vinosdiaz.com</a></p>
+                    <p><strong>Teléfono:</strong> <a href="tel:+525592309800">+52 55 9230 9800</a></p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/525592309800" target="_blank" style="color: #b8860b; font-weight: bold;">Enviar Mensaje</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Ubicación</h3>
+                    <p>Carretera Ensenada-Tecate Km 100, Valle de Guadalupe, B.C.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Aviso Legal</a>
+                </div>
+            </div>
+            <p style="margin-top: 20px;"><strong>Vinos Artesanales Díaz © 2025.</strong> Todos los derechos reservados.</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Métodos de Pago: VISA | Mastercard | Amex | PayPal | SPEI | (3 MSI disponibles)</p>
+        </footer>
+    </div> <script>
+        // ===================================
+        // LÓGICA DE SIMULACIÓN DE CARRITO
+        // ===================================
+        let cartCount = 0;
+        const cartCountElement = document.getElementById('cart-count');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                cartCount++;
+                cartCountElement.textContent = cartCount;
+                // Obtiene el nombre del producto de la tarjeta
+                const productName = this.closest('.producto-card').querySelector('h3').textContent;
+                alert(`🛒 Producto "${productName}" agregado al carrito. Total: ${cartCount}`);
+            });
+        });
+
+        // NOTA: Para implementar la función de "quitar del carrito",
+        // necesitarías implementar una vista de carrito más detallada
+        // que maneje inventario. Por ahora, solo se añadió la función de agregar.
+
+        // =======================================
+        // LÓGICA DE SIMULACIÓN DE INICIO DE SESIÓN
+        // =======================================
+        const loginForm = document.getElementById('login-form');
+        const loginFeedback = document.getElementById('login-feedback');
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Detener el envío del formulario
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simulación de credenciales de éxito: (Usuario: admin, Clave: 1234)
+            if (username === 'admin' && password === '1234') {
+                loginFeedback.textContent = '¡Inicio de sesión exitoso! Bienvenido de nuevo.';
+                loginFeedback.className = 'login-message success';
+                // En un sitio real, aquí se haría un fetch a la API y una redirección
+            } else {
+                loginFeedback.textContent = 'Error: Usuario o contraseña incorrectos. Intenta con "admin" y "1234"';
+                loginFeedback.className = 'login-message error';
+            }
+        });
+    </script>
 </body>
 </html>
